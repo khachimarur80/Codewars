@@ -20,7 +20,7 @@ array = [[1,2,3],
          [7,6,5]]
 snail(array) #=> [1,2,3,4,5,6,7,8,9]
 ```
-![Snail Diagram]('./assets/snail.png')
+![Snail Diagram](assets/snail.png)
 
 This image will illustrate things more clearly:
 
