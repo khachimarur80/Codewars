@@ -10,6 +10,8 @@ Please note that using `encode` is considered cheating.
 
 ## Solution 
 
+### Python
+
 ```
 def rot13(message):
     alphabet = 'abcdefghijklmnopqrstuvwxyz'
@@ -23,4 +25,46 @@ def rot13(message):
         else:
             encoded += char
     return encoded
+```
+
+### C++
+
+```
+#include <string>
+using namespace std;
+
+string rot13(string msg)
+{
+  string alphabet = "abcdefghijklmnopqrstuvwxyz";
+  string encoded;
+  int msgLength = msg.length();
+  for(int i=0; i<msgLength; i++) {
+    bool isLower = false;
+    bool isUpper = false;
+    int index;
+    for (int j=0; j<26; j++) {
+      if (toupper(alphabet[j])==msg[i]) {
+        isUpper = true;
+        index = j;
+        break;
+      }
+      else if (alphabet[j]==msg[i]) {
+        isLower = true;
+        index = j;
+        break;
+      }
+    }
+    if (isLower) {
+      encoded += alphabet[(index+13)%26];
+    }
+    else if (isUpper) {
+      encoded += toupper(alphabet[(index+13)%26]);
+    }
+    else {
+      encoded += msg[i];
+    }
+  }
+  return encoded;
+}
+
 ```
